@@ -1,0 +1,45 @@
+import numpy as np  
+import pandas as pd  
+from scipy.stats import norm 
+import matplotlib.pyplot as plt
+import math
+from mpl_toolkits.mplot3d import Axes3D
+
+figure = plt.figure()
+ax = Axes3D(figure)
+t = np.arange(0.4 ,2.1, 0.4 )
+x = np.arange(-1, 1.1, 0.5)
+t,x = np.meshgrid(t,x)
+a = pd.read_csv('3.csv')
+b = np.array(a).tolist()
+s = np.array(b[0:5][0:5])
+s2 = np.array(b[10:15][0:5])
+ax.plot_wireframe(x,t,s2,rstride =1,cstride =1,color = 'black',lw = 0.6, edgecolor = 'k')
+ax.plot_surface(x,t,s,rstride=5,cstride=4,color = 'white',lw = 0.9,edgecolor = 'k',alpha = 0.5)
+plt.gca().invert_yaxis()
+ax.set_xlabel('x')
+ax.set_ylabel('t')
+ax.set_zlabel('Value')
+ax.text(-1, 0.8, 30, 'A')
+ax.text(1, 1.2, 30, 'B')
+plt.show()
+
+figure = plt.figure()
+ax1 = Axes3D(figure)
+t = np.arange(0.4 ,2.1, 0.4 )
+x = np.arange(-1, 1.1, 0.5)
+t,x = np.meshgrid(t,x)
+a = pd.read_csv('3.csv')
+b = np.array(a).tolist()
+s = np.array(b[5:10][0:5])
+s2 = np.array(b[10:15][0:5])
+ax1.plot_wireframe(x,t,s2,rstride =1,cstride =1,color = 'black',lw = 0.6, edgecolor = 'k')
+ax1.plot_surface(x,t,s,rstride=5,cstride=4,color = 'white',lw = 0.9,edgecolor = 'k',alpha = 0.5)
+plt.gca().invert_yaxis()
+ax1.set_xlabel('x')
+ax1.set_ylabel('t')
+ax1.set_zlabel('Value')
+ax1.set_zlim(0,250)
+#ax1.text(-1, 0.8, 30, 'A')
+#ax1.text(1, 1.2, 30, 'B')
+plt.show()
